@@ -51,9 +51,14 @@
             <div class="config-panel">
                 <div class="input-group">
                     <label for="qr-text">내용 (URL 또는 텍스트)</label>
-                    <div class="input-wrapper">
-                        <i class="fa-solid fa-link"></i>
-                        <input type="text" id="qr-text" placeholder="https://example.com" value="https://google.com">
+                    <div class="input-wrapper-row">
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-link"></i>
+                            <input type="text" id="qr-text" placeholder="https://example.com" value="https://google.com">
+                        </div>
+                        <button id="shorten-btn" class="brutal-btn-small">
+                            <i class="fa-solid fa-scissors"></i> URL 단축
+                        </button>
                     </div>
                 </div>
 
@@ -84,6 +89,16 @@
                             <option value="dot">Dot</option>
                             <option value="extra-rounded" selected>Extra Rounded</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="logo-upload">로고 이미지 추가 (중앙)</label>
+                    <div class="input-wrapper-row">
+                        <input type="file" id="logo-upload" accept="image/*" class="file-input">
+                        <button id="remove-logo-btn" class="brutal-btn-small danger">
+                            <i class="fa-solid fa-trash-can"></i> 제거
+                        </button>
                     </div>
                 </div>
 
