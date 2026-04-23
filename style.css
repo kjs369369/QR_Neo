@@ -224,6 +224,62 @@ header p {
     outline: none;
 }
 
+.input-wrapper i {
+    position: absolute;
+    left: 1rem;
+    color: var(--black);
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: var(--white);
+    border: var(--brutal-border);
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Large URL Input */
+.input-large {
+    padding: 1.25rem 1.25rem 1.25rem 3rem !important;
+    font-size: 1.1rem !important;
+    min-height: 3.5rem;
+}
+
+/* Shortened URL Result Box */
+.short-url-box {
+    background: #ecfdf5;
+    border: var(--brutal-border);
+    box-shadow: var(--brutal-shadow-small);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.short-url-box label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+.short-url-input {
+    flex: 1;
+    padding: 0.85rem 1rem !important;
+    background: var(--white) !important;
+    border: var(--brutal-border) !important;
+    font-size: 1rem;
+    color: var(--accent-blue);
+}
+
+.copy-btn {
+    background: #10b981 !important;
+}
+
+.copy-btn.copied {
+    background: var(--accent-orange) !important;
+}
+
 select {
     padding-left: 1rem;
     cursor: pointer;

@@ -65,7 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         el.addEventListener('input', updateQR);
     });
 
-    // URL Shortening Logic (is.gd API)
+    // URL Shortening Logic (TinyURL)
+    const shortUrlResult = document.getElementById('short-url-result');
+    const shortUrlOutput = document.getElementById('short-url-output');
+    const copyBtn = document.getElementById('copy-btn');
+
     shortenBtn.addEventListener('click', async () => {
         const url = qrText.value;
         if (!url || !url.startsWith('http')) {
@@ -82,8 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const shortUrl = await response.text();
             
             if (shortUrl && shortUrl.startsWith('http')) {
-                qrText.value = shortUrl.trim();
-                updateQR();
+                const trimmed = shortUrl.trim();
+                // Show the shortened URL in the result box
+                shortUrlOutput.value = trimmed;
+                shortUrlResult.style.display = 'flex';
+                // Update QR code to use the shortened URL
+                qrCode.update({
+                    data: trimmed,
+                    image: currentLogo,
+                    dotsOptions: { color: dotsColor.value, type: dotsStyle.value },
+                    backgroundOptions: { color: bgColor.value },
+                    cornersSquareOptions: { type: cornersStyle.value, color: dotsColor.value }
+                });
             } else {
                 alert('URL 단축에 실패했습니다.');
             }
@@ -94,6 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
             shortenBtn.disabled = false;
             shortenBtn.innerHTML = '<i class="fa-solid fa-scissors"></i> URL 단축';
         }
+    });
+
+    // Copy shortened URL to clipboard
+    copyBtn.addEventListener('click', () => {
+        const text = shortUrlOutput.value;
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(() => {
+            copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> 복사됨!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i> 복사';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        });
     });
 
     // Logo Upload Handling

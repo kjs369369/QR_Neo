@@ -54,10 +54,20 @@
                     <div class="input-wrapper-row">
                         <div class="input-wrapper">
                             <i class="fa-solid fa-link"></i>
-                            <input type="text" id="qr-text" placeholder="https://example.com" value="https://google.com">
+                            <input type="text" id="qr-text" class="input-large" placeholder="https://example.com" value="https://google.com">
                         </div>
                         <button id="shorten-btn" class="brutal-btn-small">
                             <i class="fa-solid fa-scissors"></i> URL 단축
+                        </button>
+                    </div>
+                </div>
+
+                <div id="short-url-result" class="short-url-box" style="display: none;">
+                    <label>단축된 URL</label>
+                    <div class="input-wrapper-row">
+                        <input type="text" id="short-url-output" class="short-url-input" readonly>
+                        <button id="copy-btn" class="brutal-btn-small copy-btn">
+                            <i class="fa-solid fa-copy"></i> 복사
                         </button>
                     </div>
                 </div>
