@@ -77,13 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
         shortenBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>...';
 
         try {
-            // is.gd API is simple and doesn't require CORS for simple GET if used via a proxy or if it allows it.
-            // However, browsers might block it. Using a simple fetch.
-            const response = await fetch(`https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`);
-            const data = await response.json();
+            // TinyURL API - always redirects directly without interstitial pages
+            const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+            const shortUrl = await response.text();
             
-            if (data.shorturl) {
-                qrText.value = data.shorturl;
+            if (shortUrl && shortUrl.startsWith('http')) {
+                qrText.value = shortUrl.trim();
                 updateQR();
             } else {
                 alert('URL 단축에 실패했습니다.');
